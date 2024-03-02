@@ -1,0 +1,182 @@
+@import "include-media";
+@import "triangle";
+
+
+// Utilities
+// --------------------------------------------------
+// hidden text
+@mixin text-over() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// WebKit-style focus
+@mixin tab-focus() {
+  // Default
+  outline: solid;
+  // WebKit
+  outline: 3px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+// Multiple line text
+@mixin multiple($lh: 14, $n: 2, $fz: $font-size-base) {
+  min-height: (($lh * $n) + 2) + px;
+  font-size: $fz;
+  line-height: $lh + px;
+  overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: $n;
+  -webkit-box-orient: vertical;
+}
+
+// hidden text full
+//
+@mixin hide-text() {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+
+@mixin text-hide() {
+  @include hide-text;
+}
+
+// font-face
+// Usage @include font-face(icons, '../fonts/icons/iconfont');
+@mixin font-face($name, $url) {
+  @font-face {
+    font-family: "#{$name}";
+    src: url('#{$url}.eot');
+    src: url('#{$url}.eot#iefix') format("embedded-opentype"),
+         url('#{$url}.ttf') format('truetype'),
+         url('#{$url}.svg##{$name}') format('svg'),
+         url('#{$url}.woff') format('woff'),
+         url('#{$url}.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    @content;
+  }
+}
+
+// [converter] $parent hack
+@mixin text-emphasis-variant($parent, $color) {
+  #{$parent} {
+    color: $color;
+  }
+  a#{$parent}:hover,
+  a#{$parent}:focus {
+    color: darken($color, 10%);
+  }
+}
+
+
+// Text overflow
+// Requires inline-block or block for proper styling
+@mixin text-overflow() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+// rem-to-px & fallback IE
+// NOTE: $base-font-size === size html!
+@mixin x-rem($property, $values) {
+  $base-font-size: 10px; // should be consistent with your html/body font-size
+  $px-values: ();
+  $rem-values: ();
+
+  @each $value in $values {
+    @if $value == 0 or $value == 0px {
+      $px-values: join($px-values, 0);
+      $rem-values: join($rem-values, 0);
+
+    } @else if type-of($value) == number and not unitless($value) and (unit($value) == px) {
+      $new-rem-value: $value / $base-font-size;
+      $px-values: join($px-values, round($value));
+      $rem-values: join($rem-values, #{$new-rem-value}rem);
+
+    } @else {
+      $px-values: join($px-values, round($value * $base-font-size));
+      $rem-values: join($rem-values, #{$value}rem);
+    }
+  }
+
+  #{$property}: $px-values;
+  #{$property}: $rem-values;
+}
+
+
+// Utilities
+// --------------------------------------------------
+// Box-sizing toggle
+@mixin box-sizing($box-model) {
+  -webkit-box-sizing: $box-model; // Safari <= 5
+     -moz-box-sizing: $box-model; // Firefox <= 19
+          box-sizing: $box-model;
+}
+
+@mixin center-block() {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@mixin center($width, $height) {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: $height;
+    width: $width;
+    margin-left: - $width / 2;
+    margin-top: - $height / 2;
+}
+
+@mixin line() {
+  outline: 1px solid red;
+}
+
+@mixin inline-block($gutter: 0, $fz: 1.4, $text: left) {
+  display: inline-block;
+  margin: $gutter;
+  text-align: $text;
+  @include x-rem(font-size, $fz);
+  &:nth-child(-n+1) { margin-left: 0; };
+  &:nth-last-child(-n+1) { margin-right: 0; };
+}
+
+// clearfix
+@mixin cf() {
+  &:before,
+  &:after {
+    content: " "; // 1
+    display: table; // 2
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+// Navbar vertical align margin
+//
+// Example: an element has a height of 30px, so write out: to calculate the appropriate top margin.
+
+@mixin navbar-vertical-align($element-height) {
+  margin-top: (($navbar-height - $element-height) / 2);
+  margin-bottom: (($navbar-height - $element-height) / 2);
+}
+
+
+// Navbar vertical align padding
+//
+// Example: an element has a height of 30px, so write out: to calculate the appropriate top padding.
+
+@mixin padding-vertical-align($element-height) {
+  padding-top: (($navbar-height - $element-height) / 2);
+  padding-bottom: (($navbar-height - $element-height) / 2);
+}

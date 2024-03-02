@@ -1,0 +1,50 @@
+/*************************************
+
+    Breadcrumbs for inner pages
+
+*************************************/
+
+.breadcrumbs-wrapper {
+  border-bottom: 1px solid $hr-border;
+  background-color: #fafafa;
+  margin-bottom: 80rem/$font-size-base;
+}
+
+.breadcrumb {
+  font-family: 'Lato', sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 0;
+  font-size: 14rem/$font-size-base;
+  line-height: 20rem/$font-size-base;
+  @include clearfix();
+
+  > li {
+    display: inline-block;
+    vertical-align: middle;
+    a,
+    &.active {
+      font-size: 1em;
+      letter-spacing: $ls;
+    }
+
+    + li:before {
+      font-family: FontAwesome;
+      content: "\f105";
+      font-size: 18rem/$font-size-base;
+      font-weight: normal;
+      padding: 0 15px;
+
+    }
+
+    a {
+      color: $brand-warning;
+      &:hover {
+        color: $link-hover-color;
+      }
+      &:focus {
+        color: $gray-base;
+      }
+    }
+  }
+}

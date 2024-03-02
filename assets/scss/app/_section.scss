@@ -1,0 +1,152 @@
+/*************************************
+
+    SECTION SETTINGS
+
+    = st-row
+      ¬ inner
+      ¬ section-title
+      ¬ heading
+      ¬ st-row--hr
+      ¬ st-row--gray
+      ¬ st-row--bg
+
+    = hr-heading
+      ¬ h1
+      ¬ small
+
+    = over
+    = overlay
+    = full-wd
+
+*************************************/
+
+.st-row {
+  position: relative;
+  padding-bottom: 50rem/$font-size-base;
+
+  h2.section-title {
+    margin: 38rem/$font-size-base 0;
+  }
+
+  @include media('<md') {
+
+    &__heading {
+      margin-bottom: 30rem/$font-size-base;
+    }
+
+    &__inner {
+      h1 {
+        line-height: 1em;
+        margin-bottom: 15rem/$font-size-base;
+      }
+    }
+  }
+
+  @include media('<xs') {
+    &__inner {
+      h1 {
+        font-size: 24rem/$font-size-base;
+        line-height: 30rem/$font-size-base;
+        margin-bottom: 15rem/$font-size-base;
+      }
+    }
+  }
+
+  &--gray {
+    background-color: $bg-lighter;
+  }
+
+  /**        ¬ section no title - add padding-top          **/
+  &--hr {
+    padding: 80rem/$font-size-base 0;
+  }
+}
+
+.bg-pattern {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+
+  .prlx {
+    @extend .bg-pattern;
+  }
+}
+
+
+ /**        ¬ hero section title         **/
+.hr-heading {
+  position: relative;
+  text-align: center;
+  margin-top: 75rem/$font-size-base;
+  margin-bottom: 50rem/$font-size-base;
+
+  h1, .h1 {
+    position: relative;
+    text-align: center;
+    font-size: 48rem/$font-size-base;
+    line-height: 1;
+    padding-bottom: 30rem/$font-size-base;
+    margin-top: 0;
+    margin-bottom: 30rem/$font-size-base;
+    font-weight: 700;
+    border-bottom: 1px solid $brand-warning;
+
+    &:after {
+      display: block;
+      position: absolute;
+      content: ' ';
+      left: 50%;
+      bottom: -5px;
+      font-size: 9px;
+      height: 9px;
+      width: 9px;
+      background-color: $brand-warning;
+      transform: translateX(-50%);
+    }
+  }
+
+  &.rotate h1:after, .h1:after {
+    transform: translateX(-50%) rotate(45deg);
+  }
+
+  small {
+    display: inline-block;
+    width: 100%;
+    font-family: $lato;
+    font-size: 1em;
+    color: $gray-light;
+    letter-spacing: $ls;
+    text-transform: uppercase;
+  }
+
+  @include media('<md') {
+    margin-bottom: 30rem/$font-size-base;
+  }
+}
+
+
+/**        = overlay         **/
+.over {
+  background-color: rgba(#000, .7);
+
+  &--light {
+    background-color: rgba(#fff, .6);
+  }
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(#000, .7);
+  @include transitionBase();
+
+  &--light {
+    background-color: rgba(#fff, .6);
+  }
+}

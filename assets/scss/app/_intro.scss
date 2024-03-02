@@ -1,0 +1,359 @@
+/*************************************
+
+    INTRO PAGES
+
+    = page-home
+      ¬ extra-title
+      ¬ intro-banner
+
+    = page-inner
+      ¬ intro-banner
+
+    = intro-slider
+      ¬ swiper-slider
+      ¬ intro-hero
+        ¬ price
+
+      ¬ promo-title
+      ¬ intro-title
+      ¬ intro-title--decor
+      ¬ list-type
+      ¬ control-panel
+
+    = PAGE 3 intro-video
+
+    SETTINGS background and parallax
+    = intro-bg
+
+*************************************/
+
+.carousel-default {
+  position: relative;
+  height: 85vh;
+
+  @include media('>sm') {
+    &__control {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 50px;
+      z-index: 1;
+    }
+  }
+}
+
+.page-content {
+  padding-top: 78px;
+
+  @include media('>sm') {
+    padding-top: 128px;
+  }
+
+  @include media('>xl') {
+    padding-top: 110px;
+  }
+}
+
+.page-home .intro-banner {
+  text-align: center;
+
+  .intro-video {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    iframe {
+      @extend .intro-video;
+    }
+  }
+
+  &__inner {
+    height: calc(100vh - #{$header-height});
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(#000, .5);
+
+    @include media('>sm') {
+      height: calc(100vh - #{$header-height-sm});
+    }
+
+    @include media('>xl') {
+      height: calc(100vh - #{$header-height-xl});
+    }
+  }
+}
+
+// Big title for intro section
+.extra-title {
+  flex-grow: 1;
+  color: #fff;
+
+  &__top {
+    font-family: $lato;
+    color: $brand-warning;
+    text-transform: uppercase;
+    letter-spacing: $ls;
+  }
+
+  h1 {
+    font-size: 92rem/$font-size-base;
+    margin: 8rem/$font-size-base 0 30rem/$font-size-base;
+    color: inherit;
+    white-space: nowrap;
+  }
+
+  p {
+    margin-bottom: 40rem/$font-size-base;
+  }
+
+  .small {
+    display: inline-block;
+    font-size: 30rem/$font-size-base;
+    line-height: 36rem/$font-size-base;
+  }
+
+  @include media('<sm') {
+    max-width: 320px;
+
+    h1 {
+      font-size: 64px;
+    }
+  }
+
+  @include media('<xs') {
+    max-width: 280px;
+
+    h1 {
+      font-size: 56rem/$font-size-base;
+    }
+
+    p {
+      margin-bottom: 1.25em;
+    }
+
+    .small {
+      font-size: 24rem/$font-size-base;
+      line-height: 36rem/$font-size-base;
+    }
+  }
+}
+
+// for inner page
+.page-inner .intro-banner {
+  margin-top: -1px;
+  border-top: 1px solid;
+  text-align: center;
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 260px;
+    background-color: rgba(#000, .7);
+
+    @include media('>sm') {
+      height: 340px;
+    }
+  }
+
+  .title {
+    margin: 0;
+    color: #fff;
+    font-size: 48rem/$font-size-base;
+  }
+}
+
+
+.intro-banner {
+  &__inner {
+    position: relative;
+  }
+}
+
+
+/**        PAGE 2 = intro-slider         **/
+.intro-slider {
+  .swiper-slide {
+    margin-top: -$header-height;
+    min-height: 570px;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background-position: 50% 25%;
+    background-size: cover;
+
+    @include media('>sm') {
+      margin-top: -$header-height-sm;
+      padding-top: 64px;
+    }
+
+    @include media('>xl') {
+      margin-top: -$header-height-xl;
+    }
+
+    &:after {
+      position: absolute;
+      content: ' ';
+      display: block;
+      background-color: rgba(#000, .7);
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 1;
+    }
+  }
+
+  .intro-hero {
+    position: relative;
+    display: flex;
+    flex-flow: column wrap;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    color: #fff;
+    z-index: 2;
+
+    &__price {
+      margin-bottom: 20px;
+
+      > *:first-child {
+        margin-right: 10px;
+      }
+    }
+
+    p, .list-type {
+      margin-bottom: 13px;
+    }
+
+    p {
+      max-width: 255px;
+    }
+
+    &--center {
+      max-width: 557px;
+      flex-basis: 557px;
+      margin: 0 auto;
+      text-align: center;
+
+      p {
+        max-width: none;
+      }
+    }
+
+    .promo-title {
+      @extend %text-brand;
+    }
+
+    .intro-title {
+      position: relative;
+      color: #fff;
+      margin-top: 0;
+      margin-bottom: 30rem/$font-size-base;
+
+      &__text {
+        display: inline-block;
+        margin-bottom: 13rem/$font-size-base;
+
+        &.under {
+          border-bottom: 1px solid $brand-warning;
+          padding-bottom: 13rem/$font-size-base;
+          margin-bottom: 0;
+        }
+      }
+
+      .promo-title {
+        display: block;
+        font-size: 18/48*100%;
+        line-height: 1;
+        font-weight: 400;
+        margin-bottom: 13rem/$font-size-base;
+      }
+    }
+
+    .intro-title--decor {
+      padding-bottom: 25rem/$font-size-base;
+      margin-bottom: 25rem/$font-size-base;
+      border-bottom: 1px solid $brand-warning;
+
+      &:after {
+        @extend %bullet-rotate;
+        position: absolute;
+        left: 50%;
+        bottom: -5px;
+        font-size: 10px;
+        margin-left: -5px;
+      }
+    }
+
+    .flag {
+      margin-left: 30px;
+      vertical-align: middle;
+    }
+
+    .list-type {
+      ul > li {
+        margin-bottom: 7px;
+      }
+    }
+
+    .cost {
+      @extend %text-brand-lg;
+      letter-spacing: normal;
+    }
+
+    .cost-disable {
+      @extend %text-brand;
+      color: $gray-light;
+      letter-spacing: normal;
+      text-decoration: line-through;
+    }
+
+    .btn {
+      margin-top: 30rem/$font-size-base;
+    }
+  }
+
+  &__bottom {
+    position: absolute;
+    bottom: 50px;
+    left: 0;
+    right: 0;
+    z-index: 2;
+  }
+
+  @include media('<sm') {
+    &__bottom {
+      bottom: 30px;
+    }
+  }
+
+  @include media ('<xs') {
+    .intro-hero {
+      text-align: center;
+      p {
+        margin: 0 auto;
+      }
+
+      .flag {
+        display: block;
+        margin: 15px auto 0;
+      }
+    }
+  }
+}
+
+/**        settings background and parallax effect         **/
+.intro-bg {
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+  z-index: 1;
+}

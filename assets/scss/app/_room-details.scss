@@ -1,0 +1,232 @@
+/*************************************
+
+    ROOM DETAILS
+    = room-gallery
+      ¬ room-gallery__track
+      ¬ gallery-item-link
+
+    = room-service
+      ¬ list-type
+      ¬ table-responsive
+      ¬ table
+      ¬ tooltip-inner
+
+*************************************/
+
+.room-gallery {
+  margin-bottom: 50px;
+
+  .container {
+    overflow: hidden;
+  }
+
+  &__title {
+    @extend .panel-board__title;
+  }
+
+  &__inner {
+    position: relative;
+    height: 630px;
+    overflow: hidden;
+
+    > [class^=col] {
+      height: 100%;
+    }
+  }
+
+  &__slides {
+    height: 100%;
+
+    .swiper-wrapper,
+    .swiper-slide {
+      height: 100%;
+    }
+  }
+
+  &__track {
+    .swiper-slide {
+      position: relative;
+      height: 120px;
+      padding-bottom: 12px;
+      overflow: hidden;
+    }
+
+    .swiper-slide:hover,
+    .swiper-slide-active {
+      &:after {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__thumb {
+    display: block;
+    height: 100%;
+    width: 100%;
+
+    &:after {
+      content: '';
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      left: 0;
+      background-color: rgba(#fff, .7);
+      opacity: 0;
+      transition: opacity .4s ease;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  @include media ('<lg') {
+    &__inner {
+      height: 465px;
+    }
+  }
+
+  @include media ('<md') {
+    &__inner {
+      height: 355px;
+    }
+  }
+
+  @include media('<sm') {
+    .container {
+      padding: 0;
+    }
+
+    &__heading {
+      text-align: center;
+    }
+
+    &__inner {
+      height: auto;
+    }
+
+    &__track {
+      .swiper-wrapper {
+        flex-direction: row;
+      }
+
+      .swiper-slide {
+        width: 20vh;
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.room-service {
+  padding-bottom: 80rem/$font-size-base;
+
+  &__title {
+    margin-top: -9px;
+  }
+
+  .list-type ul {
+    margin-bottom: 0;
+  }
+
+  .btn-wrap {
+    margin-bottom: 0;
+
+    > .btn {
+      width: 100%;
+    }
+  }
+
+  .table-responsive {
+    border: 1px solid $brand-warning;
+    border-radius: 2px;
+  }
+
+
+  .table {
+    background: transparent;
+    margin-bottom: 0;
+    font-size: 1em;
+
+    .fa-user {
+      display: inline-block;
+      padding: 0 4px;
+      color: $gray-dark;
+    }
+
+    td.price {
+      @extend %text-brand;
+      letter-spacing: normal;
+    }
+
+    td.meal {
+      a {
+        font-family: $font-family;
+        font-size: 1em;
+        line-height: .87em;
+
+        sup {
+          top: auto;
+          display: inline-block;
+          font-size: 55%;
+          color: $brand-warning;
+          font-weight: 700;
+          width: 0;
+          line-height: 1;
+          vertical-align: top;
+          @include transitionBase();
+        }
+
+        &:hover sup {
+          color: $link-hover-color;
+        }
+
+        &:focus sup {
+          color: $gray-base;
+        }
+      }
+    }
+
+    > thead > tr > th,
+    > tbody > tr > td {
+      width: 33%;
+      border-width: 0;
+      text-align: center;
+      vertical-align: top;
+
+    }
+
+    > thead {
+      background-color: $brand-warning;
+      color: #fff;
+
+      > tr {
+        th {
+          white-space: normal;
+        }
+      }
+    }
+
+    > tbody > tr {
+      background-color: #fafafa;
+
+      &:nth-child(2n) {
+        background-color: #dedede;
+      }
+    }
+  }
+
+  @include media('<sm') {
+    text-align: center;
+
+    .table-responsive {
+      margin-top: 38rem/$font-size-base;
+    }
+  }
+
+  .table .tooltip-inner {
+    text-align: left;
+  }
+}

@@ -1,0 +1,79 @@
+/*************************************
+
+    CUSTOM MODALS
+
+*************************************/
+
+.modal-backdrop {
+  opacity: .35;
+  filter: alpha(opacity=35);
+}
+
+/**        = modal form reservation         **/
+.modal {
+  .modal-dialog {
+    .close {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 40px;
+      height: 40px;
+      font-size: 24px;
+      line-height: 1;
+      z-index: 1;
+      @include transitionBase();
+    }
+
+  .modal-content {
+    max-width: 570px;
+    margin: auto;
+    border: none;
+    @include shadow();
+    box-shadow: none!important;
+    border: none!important;
+    border-radius: 0px;
+  }
+
+  .modal-content-centered {
+    max-width: 360px;
+    margin: auto;
+  }
+
+  .hr-heading {
+    padding: 20px 0 24px;
+    margin: 0;
+
+    h2 {
+      margin-bottom: 0;
+      font-size: 2.8rem;
+    }
+  }
+
+  .modal-header {
+    padding-top: 0;
+    padding-bottom: 0;
+    border-bottom-width: 0;
+
+      span {
+        display: inline-block;
+        line-height: 1;
+      }
+    }
+  }
+
+  .btn {
+    display: block;
+    width: 100%;
+    max-width: 360px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px 0;
+  }
+
+  @include media('<sm') {
+    .modal-dialog {
+      max-width: 100%;
+      margin: auto;
+    }
+  }
+}

@@ -1,0 +1,250 @@
+/*************************************
+
+    PAGES "SERVICES DETAILS"
+
+*************************************/
+
+.service-intro {
+  position: relative;
+
+  &__hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - #{$header-height});
+    padding: 20px 0;
+    margin: 0;
+
+    @include media('>sm') {
+      min-height: calc(100vh - #{$header-height-sm});
+    }
+
+    @include media('>xl') {
+      min-height: calc(100vh - #{$header-height-xl});
+    }
+  }
+
+  &__slider {
+    height: calc(100vh - #{$header-height} - 80px);
+    min-height: 320px;
+
+    @include media('>sm') {
+      height: calc(100vh - #{$header-height-sm} - 80px);
+    }
+
+    @include media('>xl') {
+      height: calc(100vh - #{$header-height-xl} - 80px);
+    }
+  }
+
+  &__bottom {
+    padding: 0 15px 80px;
+    margin-bottom: 50px;
+
+    .container {
+      position: relative;
+    }
+  }
+
+  &__panel {
+    position: absolute;
+    bottom: -50px;
+    right: 0;
+    padding: 10px;
+    background-color: $gray-base-light;
+    z-index: 1;
+    margin: 0 0px auto;
+    @include shadow();
+
+    h1 {
+      color: #ffffff;
+      font-size: 6vw;
+      margin-bottom: 50px;
+      white-space: nowrap;
+    }
+
+    &-inner {
+      padding: 30px;
+      border: 2px solid rgba($gray-light, 0.30);
+    }
+
+    @include media('>sm') {
+      max-width: 550px;
+      width: 100%;
+
+      &-inner {
+        padding: 50px 30px;
+      }
+
+      h1 {
+        font-size: 42px;
+      }
+    }
+  }
+
+  &__subtitle {
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: 400;
+    color: $gray-light;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-family: $lato;
+
+    .cost {
+      color: $brand-warning;
+    }
+  }
+}
+
+.service-category {
+  position: relative;
+  height: 400px;
+  margin-bottom: -80px;
+
+  &__slide {
+    height: 100%;
+  }
+
+  &__slide-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+  }
+
+  &__slide-link {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 30px;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    overflow: hidden;
+
+    &::after {
+      position: absolute;
+      content: '';
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: $gray-base;
+      opacity: 0.60;
+      z-index: 1;
+      transition: 300ms;
+    }
+
+    h2 {
+      position: relative;
+      z-index: 2;
+      font-size: 32rem/$font-size-base;
+      line-height: 1.4;
+      margin-bottom: 0;
+      text-align: center;
+
+      span {
+        color: #ffffff;
+        transition: 300ms ease;
+        border-bottom: 1px solid transparent;
+      }
+    }
+
+    &:hover {
+      &::after {
+        opacity: 0.15;
+      }
+
+      h2 {
+        span {
+          color: $brand-warning;
+          border-bottom-color: currentColor;
+        }
+      }
+    }
+  }
+
+  &__arrow {
+    position: absolute;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 10%;
+    min-width: 60px;
+    line-height: 1;
+    font-size: 2.4rem;
+    color: $brand-warning;
+    z-index: 10;
+    transition: opacity 300ms, transform 300ms;
+
+    html.no-touch & {
+      opacity: 0;
+    }
+
+    .service-category:hover & {
+      opacity: 1;
+      transform: translateX(0px);
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: 300ms ease;
+    }
+
+    &:hover {
+      &::before {
+        opacity: 0.6;
+      }
+    }
+
+    &.left {
+      left: 0;
+
+      &::before {
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0.35) 0%, transparent 100%);
+      }
+    }
+    &.right {
+      right: 0;
+
+      &::before {
+        background-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.35) 100%);
+      }
+    }
+
+    @include media('>md') {
+      padding: 20px;
+
+      &.left {
+        justify-content: flex-end;
+        transform: translateX(-15px);
+      }
+      &.right {
+        justify-content: flex-start;
+        transform: translateX(15px);
+      }
+    }
+  }
+}
+
+.service-book {
+  padding: 80px 15px;
+}
+
+.service-booking {
+  .btn {
+    margin-top: 50px;
+  }
+}

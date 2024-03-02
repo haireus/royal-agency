@@ -1,0 +1,151 @@
+/*************************************
+
+    CUSTOM GRID
+
+    width < 768px
+    ¬ col-xs
+    ¬ item-sm
+    ¬ full-wd
+
+    width < 480px
+    ¬ col-rs - reset float, width 100%
+
+*************************************/
+
+/**        ¬ clearfix for fix float        **/
+.cf {
+  @include clearfix;
+}
+
+/**        width < 768px         **/
+@include media('<sm') {
+  .no-gutters-sm {
+    padding: 0;
+
+    .row {
+      padding: 0;
+
+      [class*=col] {
+        padding: 0;
+      }
+    }
+  }
+
+  .col-auto {
+    max-width: 450px;
+    margin: 0 auto;
+  }
+
+  .item-sm {
+    margin-bottom: 30px;
+  }
+}
+
+@include media('<xs') {
+  .col {
+    width: 100%;
+  }
+}
+
+// flexible
+.flex-row {
+  display: flex;
+  flex-wrap: wrap;
+
+  &.row {
+    &::before,
+    &::after {
+      display: none;
+    }
+  }
+}
+
+.content-grid {
+  .row {
+    > * {
+      margin-bottom: 30px;
+    }
+
+    img {
+      display: inline-block;
+    }
+  }
+
+  @include media('<xs') {
+    .row {
+      margin-left: -10px;
+      margin-right: -10px;
+
+      > * {
+        padding-left: 10px;
+        padding-right: 10px;
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
+
+.no-gutters {
+  margin-left: 0;
+  margin-right: 0;
+
+  > [class*=col] {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.flex-column {
+  -ms-flex-direction: column !important;
+  flex-direction: column !important;
+}
+
+.flex-row-reverse {
+  -ms-flex-direction: row-reverse !important;
+  flex-direction: row-reverse !important;
+}
+
+.flex-column-reverse {
+  -ms-flex-direction: column-reverse !important;
+  flex-direction: column-reverse !important;
+}
+
+.flex-wrap {
+  -ms-flex-wrap: wrap !important;
+  flex-wrap: wrap !important;
+}
+
+.flex-nowrap {
+  -ms-flex-wrap: nowrap !important;
+  flex-wrap: nowrap !important;
+}
+
+.flex-wrap-reverse {
+  -ms-flex-wrap: wrap-reverse !important;
+  flex-wrap: wrap-reverse !important;
+}
+
+.flex-fill {
+  -ms-flex: 1 1 auto !important;
+  flex: 1 1 auto !important;
+}
+
+.flex-grow-0 {
+  -ms-flex-positive: 0 !important;
+  flex-grow: 0 !important;
+}
+
+.flex-grow-1 {
+  -ms-flex-positive: 1 !important;
+  flex-grow: 1 !important;
+}
+
+.flex-shrink-0 {
+  -ms-flex-negative: 0 !important;
+  flex-shrink: 0 !important;
+}
+
+.flex-shrink-1 {
+  -ms-flex-negative: 1 !important;
+  flex-shrink: 1 !important;
+}

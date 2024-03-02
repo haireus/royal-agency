@@ -1,0 +1,74 @@
+/*************************************
+
+    Contact elements
+
+    = contacts-list
+    = social-list
+    = contacts-share
+    = map
+
+*************************************/
+.contacts-list {
+  line-height: 1.5;
+  text-align: center;
+
+  p, address {
+    margin-bottom: 1.25rem;
+  }
+
+  [href^=tel],
+  [href^=mailto],
+  address {
+    @extend %text-brand-xs;
+    line-height: inherit;
+  }
+
+  @include media('>sm') {
+    text-align: left;
+  }
+}
+
+.contacts-map {
+  width: 100%;
+}
+
+.page-home .contacts-map {
+  height: 360px;
+}
+
+.contacts-row {
+  &__list {
+    margin-bottom: 4.4rem;
+  }
+  &__map {
+    height: 360px;
+
+    > .contacts-map {
+      height: 100%;
+    }
+  }
+
+  @include media('>sm') {
+    padding-bottom: 80rem/$font-size-base;
+
+    &__list {
+      margin-bottom: 0;
+    }
+
+    &__map {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 100%;
+      margin: 0 15px;
+    }
+  }
+}
+
+
+.contacts-share {
+  @include media('<sm') {
+    text-align: center;
+  }
+}

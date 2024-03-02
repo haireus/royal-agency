@@ -1,0 +1,157 @@
+/*************************************
+
+    ABOUT PAGE
+
+    = about-story
+      ¬ slide
+      ¬ img
+      ¬ name
+      ¬ stat
+    ¬ panel-board
+    ¬ triangle
+
+    =about-team
+
+*************************************/
+
+.about-story {
+  .triangle {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    margin-top: -30px;
+    @include triangle(left, $gray-dark, 30rem/$font-size-base / 2, 60rem/$font-size-base / 2);
+  }
+
+  &__slide {
+    background-position: 50% 50%;
+    background-size: cover;
+    height: 100%;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(#000, .7);
+    }
+  }
+
+  &__img {
+    position: absolute;
+    right: 130px;
+    bottom: 0;
+  }
+
+  &__name {
+    position: absolute;
+    top: 50%;
+    right: 50px;
+    transform: translateY(-50%);
+    color: #fff;
+    line-height: inherit;
+
+    small {
+      @extend %text-brand-xs;
+      display: block;
+    }
+  }
+
+  @include media('<lg') {
+    &__img {
+      right: 50px;
+      z-index: 1;
+      left: 0;
+    }
+
+    &__name {
+      z-index: 2;
+    }
+  }
+
+
+  @include media('<sm') {
+    .panel-wd {
+      position: absolute;
+    }
+
+    .triangle {
+      position: absolute;
+      top: 30px;
+      @include triangle(up-right, $gray-dark, 80rem/$font-size-base, 160rem/$font-size-base);
+    }
+
+    &__name {
+      position: static;
+    }
+
+    &__img {
+      right: auto;
+      left: 5%;
+    }
+  }
+}
+
+.about-story .panel-board {
+  color: #fff;
+
+  h1, .h1 {
+    color: #fff;
+  }
+
+  &__bottom {
+    [class^=col] {
+      margin-bottom: 30rem/$font-size-base;
+    }
+  }
+
+  &__bottom {
+    font-size: 1.25rem;
+  }
+
+  @include media('>lg') {
+    &__bottom {
+      font-size: 1.5rem;
+    }
+  }
+
+  @include media('<sm') {
+    padding: 0;
+    margin: 80rem/$font-size-base auto 65rem/$font-size-base;
+    max-width: 480px;
+  }
+}
+
+.about-team {
+  font-size: 18rem/$font-size-base;
+  padding-bottom: 50rem/$font-size-base;
+
+  .row {
+    justify-content: center;
+  }
+
+  &__item {
+    margin-bottom: 24rem/$font-size-base;
+    text-align: center;
+
+    h3 {
+      line-height: 1;
+    }
+  }
+
+  &__img {
+    max-width: 260px;
+    margin: 0 auto 30rem/$font-size-base;
+
+    img {
+      width: 100%;
+      border: 2px solid $brand-warning;
+    }
+  }
+
+  &__type {
+    @extend %text-brand-xs;
+  }
+}
