@@ -773,7 +773,7 @@ a.text-warning:focus {
 
 @media (min-width: 768px) {
   .navbar {
-    height: auto;
+    height: 78px;
   }
 }
 
@@ -885,8 +885,8 @@ a.text-warning:focus {
 }
 
 .navbar-brand .logo {
-  height: 47px;
-  width: 47px;
+  height: 60px;
+  width: 60px;
   display: inline-block;
   overflow: hidden;
 }
@@ -952,7 +952,6 @@ a.text-warning:focus {
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   width: 100%;
-  height: 115px;
   transition: 0.3s ease;
 }
 
@@ -1352,13 +1351,13 @@ a.text-warning:focus {
 
 @media (min-width: 768px) {
   .page-content {
-    padding-top: 128px;
+    padding-top: 0px;
   }
 }
 
 @media (min-width: 1600px) {
   .page-content {
-    padding-top: 110px;
+    padding-top: 0px;
   }
 }
 
@@ -1376,7 +1375,7 @@ a.text-warning:focus {
 }
 
 .page-home .intro-banner__inner {
-  height: calc(100vh - 78px);
+  height: 100vh;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-flow: row wrap;
@@ -1390,13 +1389,13 @@ a.text-warning:focus {
 
 @media (min-width: 768px) {
   .page-home .intro-banner__inner {
-    height: calc(100vh - 128px);
+    height: 100vh;
   }
 }
 
 @media (min-width: 1600px) {
   .page-home .intro-banner__inner {
-    height: calc(100vh - 110px);
+    height: 100vh;
   }
 }
 
