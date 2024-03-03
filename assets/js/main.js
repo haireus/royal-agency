@@ -9,11 +9,14 @@ $(function () {
   // Animation function
   $.fn.extend({
     animateCss: function (animationName) {
-      var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
-      $(this).addClass('animated ' + animationName).one(animationEnd, function () {
-        $(this).removeClass('animated ' + animationName);
-      });
-    }
+      var animationEnd =
+        'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+      $(this)
+        .addClass('animated ' + animationName)
+        .one(animationEnd, function () {
+          $(this).removeClass('animated ' + animationName);
+        });
+    },
   });
 
   var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
@@ -27,7 +30,8 @@ $(function () {
     outClass: 'fade-out',
     inDuration: 1500,
     outDuration: 800,
-    linkElement: 'a:not([target="_blank"]):not([href^="#"]):not([href^="tel"]):not([href^="mailto"]):not(#blueimp-gallery a):not(.js-gallery-link)',
+    linkElement:
+      'a:not([target="_blank"]):not([href^="#"]):not([href^="tel"]):not([href^="mailto"]):not(#blueimp-gallery a):not(.js-gallery-link)',
     loading: true,
     loadingParentElement: 'body',
     timeout: true,
@@ -36,7 +40,7 @@ $(function () {
     overlay: false,
     transition: function (url) {
       window.location.href = url;
-    }
+    },
   });
 
   /**
@@ -46,22 +50,24 @@ $(function () {
     speed: 0.8,
     type: 'scroll',
     imgSize: 'cover',
-    automaticResize: true
+    automaticResize: true,
   });
 
   jarallax(document.querySelectorAll('.jarallax.prlx'), {
     speed: 0.6,
     type: 'scroll',
     imgSize: 'auto',
-    imgRepeat: 'repeat'
+    imgRepeat: 'repeat',
   });
 
   /**
    * fix for bootstrap tooltips
    */
-  $('[data-toggle="tooltip"]').tooltip().on('click', function (e) {
-    e.preventDefault();
-  });
+  $('[data-toggle="tooltip"]')
+    .tooltip()
+    .on('click', function (e) {
+      e.preventDefault();
+    });
 
   function headerAffix() {
     var navbarFixed = $('.navbar-fixed');
@@ -120,27 +126,36 @@ $(function () {
     var $sidebar = $('.blog-sidebar');
     var $blogPostMeta = $('.js-blog-meta');
 
-    var $top = ($('.navbar-affix').length > 0) ? $('.navbar-affix.affix').height() + 20 : 20;
+    var $top =
+      $('.navbar-affix').length > 0
+        ? $('.navbar-affix.affix').height() + 20
+        : 20;
 
     $sidebar.parent().css('position', 'static');
 
     $sidebar.stick_in_parent({
-      'parent': $('.container'),
-      'offset_top': $top
+      parent: $('.container'),
+      offset_top: $top,
     });
 
     $blogPostMeta.stick_in_parent({
-      'offset_top': $top - 10
+      offset_top: $top - 10,
     });
   }
 
   function initialVideo() {
     $('.btn-play').on({
       mouseenter: function () {
-        $(this).closest('.video-contain').find('.video-contain__preview').addClass('hover');
+        $(this)
+          .closest('.video-contain')
+          .find('.video-contain__preview')
+          .addClass('hover');
       },
       mouseleave: function () {
-        $(this).closest('.video-contain').find('.video-contain__preview').removeClass('hover');
+        $(this)
+          .closest('.video-contain')
+          .find('.video-contain__preview')
+          .removeClass('hover');
       },
       click: function () {
         var $contain = $(this).closest('.video-contain');
@@ -150,7 +165,7 @@ $(function () {
         $contain.addClass('actived');
 
         $video.attr('src', $id);
-      }
+      },
     });
   }
 
@@ -180,7 +195,7 @@ $(function () {
     },
     mouseleave: function () {
       $(this).removeClass('active');
-    }
+    },
   });
 
   /**
@@ -199,7 +214,7 @@ $(function () {
           menu: document.getElementById('panelMenu'),
           padding: 256,
           tolerance: 70,
-          touch: false
+          touch: false,
         });
 
         slideMenuOpen.on('click', function (e) {
@@ -262,10 +277,13 @@ $(function () {
           $menuTitle.find('.text').text($prev.find('> li.active > a').text());
 
           if ($prev.length < 1) {
-            $menuTitle.removeClass('active').find('.text').text($menuTitle.data('title'));
+            $menuTitle
+              .removeClass('active')
+              .find('.text')
+              .text($menuTitle.data('title'));
           }
         });
-      }
+      },
     };
   })();
 
@@ -275,7 +293,7 @@ $(function () {
 
   $('.js-counter').counterUp({
     delay: 10,
-    time: 1000
+    time: 1000,
   });
 
   /**
@@ -285,11 +303,11 @@ $(function () {
     orientation: 'bottom',
     keyboardNavigation: true,
     format: 'mm/dd/yyyy',
-    autoclose: true
+    autoclose: true,
   });
 
   $('.js-input-time').clockpicker({
-    autoclose: true
+    autoclose: true,
   });
 
   $('.label-control').on('click', function () {
@@ -300,7 +318,7 @@ $(function () {
    * Reservation Select
    */
   $('.js-select-reserved').barrating({
-    hoverState: false
+    hoverState: false,
   });
 
   $('.js-reserved-check').on('click', function () {
@@ -337,15 +355,15 @@ $(function () {
         dotsContainer: $ourClientsCarousel.next().find('.js-pagination'),
         responsive: {
           0: {
-            items: 1
+            items: 1,
           },
           576: {
-            items: 2
+            items: 2,
           },
           992: {
-            items: 3
-          }
-        }
+            items: 3,
+          },
+        },
       });
 
       // bind custom controls
@@ -354,16 +372,22 @@ $(function () {
         loop: true,
         nav: false,
         dots: true,
-        dotsContainer: $this.next().find('.js-pagination')
+        dotsContainer: $this.next().find('.js-pagination'),
       });
 
-      $this.parent().find('.next').on('click', function () {
-        $this.trigger('next.owl.carousel');
-      });
+      $this
+        .parent()
+        .find('.next')
+        .on('click', function () {
+          $this.trigger('next.owl.carousel');
+        });
 
-      $this.parent().find('.prev').on('click', function () {
-        $this.trigger('prev.owl.carousel');
-      });
+      $this
+        .parent()
+        .find('.prev')
+        .on('click', function () {
+          $this.trigger('prev.owl.carousel');
+        });
     });
   }
 
@@ -373,7 +397,7 @@ $(function () {
       speed: 1500,
       autoplay: {
         delay: 5000,
-        stopOnLastSlide: true
+        stopOnLastSlide: true,
       },
       parallax: true,
       effect: 'coverflow',
@@ -382,20 +406,19 @@ $(function () {
         stretch: 0,
         depth: 100,
         slideShadows: true,
-        modifier: 1
+        modifier: 1,
       },
       navigation: {
         prevEl: '.swiper-button-prev',
-        nextEl: '.swiper-button-next'
+        nextEl: '.swiper-button-next',
       },
       pagination: {
         el: '.swiper-pagination',
-        clickable: true
-      }
+        clickable: true,
+      },
     });
 
-    homeSliderInit.on('slideChange', function () {
-    });
+    homeSliderInit.on('slideChange', function () {});
   }
 
   if ($spaCarousel.length > 0) {
@@ -403,10 +426,10 @@ $(function () {
       speed: 500,
       effect: 'fade',
       fadeEffect: {
-        crossFade: true
+        crossFade: true,
       },
       allowTouchMove: false,
-      autoHeight: false
+      autoHeight: false,
     });
 
     var spaMenuNav = new Swiper($spaNav, {
@@ -415,13 +438,13 @@ $(function () {
       centeredSlides: true,
       slidesPerView: 'auto',
       mousewheel: {
-        invert: false
+        invert: false,
       },
       slideToClickedSlide: true,
       navigation: {
         prevEl: '.js-spa-menu-prev',
-        nextEl: '.js-spa-menu-next'
-      }
+        nextEl: '.js-spa-menu-next',
+      },
     });
 
     spaMenuCarousel.controller.control = spaMenuNav;
@@ -439,8 +462,8 @@ $(function () {
         speed: 1200,
         pagination: {
           el: $this.find('.js-pagination'),
-          clickable: true
-        }
+          clickable: true,
+        },
       });
       $this.find('.js-prev').on('click', function (e) {
         e.preventDefault();
@@ -455,7 +478,7 @@ $(function () {
 
   if ($roomCarousel.length) {
     var roomCarouselInit = new Swiper($roomCarousel, {
-      spaceBetween: 8
+      spaceBetween: 8,
     });
 
     var roomCarouselThumbs = new Swiper('.js-room-thumbs', {
@@ -465,17 +488,17 @@ $(function () {
       centeredSlides: true,
       touchRatio: 0.8,
       mousewheel: {
-        invert: false
+        invert: false,
       },
       slideToClickedSlide: true,
       on: {
-        init: function() {
+        init: function () {
           roomGalleryResize(this);
         },
-        resize: function() {
+        resize: function () {
           roomGalleryResize(this);
-        }
-      }
+        },
+      },
     });
     roomCarouselInit.controller.control = roomCarouselThumbs;
     roomCarouselThumbs.controller.control = roomCarouselInit;
@@ -489,17 +512,16 @@ $(function () {
       speed: 1200,
       navigation: {
         prevEl: '.js-prev',
-        nextEl: '.js-next'
+        nextEl: '.js-next',
       },
       breakpoints: {
         768: {
-          slidesPerView: 1
-        }
-      }
+          slidesPerView: 1,
+        },
+      },
     });
 
-    serviceCategoriesInit.on('slideChange', function () {
-    });
+    serviceCategoriesInit.on('slideChange', function () {});
   }
 
   var $gallerylink = $('.js-gallery-link');
@@ -510,7 +532,7 @@ $(function () {
       event: e,
       fullscreen: true,
       hidePageScrollbars: false,
-      disableScroll: true
+      disableScroll: true,
     };
 
     e.preventDefault();
@@ -532,7 +554,7 @@ $(function () {
     $masonryGrid.masonry({
       columnWidth: '.grid-sizer',
       itemSelector: '.gallery__item',
-      percentPosition: true
+      percentPosition: true,
     });
 
     var $masonryFilter = $masonryGrid.isotope({
@@ -540,8 +562,8 @@ $(function () {
       resizable: false,
       percentPosition: true,
       masonry: {
-        columnWidth: '.grid-sizer'
-      }
+        columnWidth: '.grid-sizer',
+      },
     });
 
     $('.filter-button-group').on('click', 'button', function (e) {
@@ -562,220 +584,3 @@ $(function () {
     el.update();
   }
 });
-
-(function() {
-  var mapInit = function() {
-    // Get the HTML DOM element that will contain your map
-    // We are using a div with id="map" seen below in the <body>
-    var Map = window.google.maps;
-    var mapEl = document.getElementById('map');
-
-    var title = mapEl.getAttribute('data-title');
-    var label = mapEl.getAttribute('data-label');
-
-    var options = {
-      // How zoomed in you want the map to start at (always required)
-      zoom: 17,
-      scrollwheel: false,
-
-      // The latitude and longitude to center the map (always required)
-      center: new Map.LatLng(-34.8679988, 138.5118251),
-
-      // How you would like to style the map.
-      // This is where you would paste any style found on Snazzy Maps.
-      styles: [
-        {
-          featureType: 'water',
-          elementType: 'geometry',
-          stylers: [
-            {
-              color: '#e9e9e9'
-            },
-            {
-              lightness: 17
-            }
-          ]
-        },
-        {
-          featureType: 'landscape',
-          elementType: 'geometry',
-          stylers: [
-            {
-              color: '#f2f2f2'
-            },
-            {
-              lightness: 20
-            }
-          ]
-        },
-        {
-          featureType: 'road.highway',
-          elementType: 'geometry.fill',
-          stylers: [
-            {
-              color: '#ffffff'
-            },
-            {
-              lightness: 17
-            }
-          ]
-        },
-        {
-          featureType: 'road.highway',
-          elementType: 'geometry.stroke',
-          stylers: [
-            {
-              color: '#ffffff'
-            },
-            {
-              lightness: 29
-            },
-            {
-              weight: 0.2
-            }
-          ]
-        },
-        {
-          featureType: 'road.arterial',
-          elementType: 'geometry',
-          stylers: [
-            {
-              color: '#ffffff'
-            },
-            {
-              lightness: 18
-            }
-          ]
-        },
-        {
-          featureType: 'road.local',
-          elementType: 'geometry',
-          stylers: [
-            {
-              color: '#ffffff'
-            },
-            {
-              lightness: 16
-            }
-          ]
-        },
-        {
-          featureType: 'poi',
-          elementType: 'geometry',
-          stylers: [
-            {
-              color: '#f5f5f5'
-            },
-            {
-              lightness: 21
-            }
-          ]
-        },
-        {
-          featureType: 'poi.park',
-          elementType: 'geometry',
-          stylers: [
-            {
-              color: '#dedede'
-            },
-            {
-              lightness: 21
-            }
-          ]
-        },
-        {
-          elementType: 'labels.text.stroke',
-          stylers: [
-            {
-              visibility: 'on'
-            },
-            {
-              color: '#ffffff'
-            },
-            {
-              lightness: 16
-            }
-          ]
-        },
-        {
-          elementType: 'labels.text.fill',
-          stylers: [
-            {
-              saturation: 36
-            },
-            {
-              color: '#333333'
-            },
-            {
-              lightness: 40
-            }
-          ]
-        },
-        {
-          elementType: 'labels.icon',
-          stylers: [
-            {
-              visibility: 'off'
-            }
-          ]
-        },
-        {
-          featureType: 'transit',
-          elementType: 'geometry',
-          stylers: [
-            {
-              color: '#f2f2f2'
-            },
-            {
-              lightness: 19
-            }
-          ]
-        },
-        {
-          featureType: 'administrative',
-          elementType: 'geometry.fill',
-          stylers: [
-            {
-              color: '#fefefe'
-            },
-            {
-              lightness: 20
-            }
-          ]
-        },
-        {
-          featureType: 'administrative',
-          elementType: 'geometry.stroke',
-          stylers: [
-            {
-              color: '#fefefe'
-            },
-            {
-              lightness: 17
-            },
-            {
-              weight: 1.2
-            }
-          ]
-        }
-      ]
-    };
-
-    // Create the Google Map using our element and options defined above
-    var map = new Map.Map(mapEl, options);
-
-    // Let's also add a marker while we're at it
-    var marker = new Map.Marker({
-      title: title,
-      icon: label,
-      position: new Map.LatLng(-34.8679988, 138.5118251),
-      map: map
-    });
-
-    return marker;
-  };
-
-  if ($('#map').length > 0) {
-    window.google.maps.event.addDomListener(window, 'load', mapInit);
-  }
-})();
