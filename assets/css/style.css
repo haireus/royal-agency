@@ -885,16 +885,16 @@ a.text-warning:focus {
 }
 
 .navbar-brand .logo {
-  height: 60px;
-  width: 60px;
+  height: 70px;
+  width: 70px;
   display: inline-block;
   overflow: hidden;
 }
 
 @media (max-width: 767px) {
   .navbar-brand .logo {
-    height: 36px;
-    width: 36px;
+    height: 60px;
+    width: 60px;
   }
 }
 
